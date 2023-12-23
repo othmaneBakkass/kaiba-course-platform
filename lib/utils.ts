@@ -1,6 +1,13 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+/**
+ * merges multiple class values into a single string. while removing any classes that have the same effect
+ * uses clsx under the hood
+ * @param {ClassValue[]} inputs - can be a class name or an object
+ * with class names as keys and expressions that can be reduced to boolean values.
+ * @returns a string of classes
+ */
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
