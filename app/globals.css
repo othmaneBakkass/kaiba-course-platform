@@ -2,26 +2,168 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/*
+	COLORS
+     	background: neutral-950 rgb(3, 7, 18) #0a0a0a
+     	card: neutral-800 rgb(38, 38, 38) #262626
+     	popover: neutral-700  rgb(64, 64, 64) #404040
+     	muted: neutral-600 rgb(82, 82, 82) #525252
+
+     	foreground: neutral-50 rgb(250, 250, 250) #fafafa
+     	card-foreground:  indigo-100 rgb(224, 231, 255)
+     	popover-foreground: neutral-100 rgb(245, 245, 245) #f5f5f5
+     	muted-foreground: neutral-400 rgb(163, 163, 163) #a3a3a3
+
+     	primary: violet-700 rgb(109, 40, 217)
+		primary-hover: violet-600 rgb(124, 58, 237)
+		primary-focus: violet-800 rgb(91, 33, 182)
+     	primary-foreground: violet-300 rgb(196, 181, 253)
+
+     	secondary: Fuchsia-700 rgb(162, 28, 175); 
+		secondary-hover: Fuchsia-600 rgb(192, 38, 211);
+		secondary-focus: Fuchsia-800 rgb(134, 25, 143);
+     	secondary-foreground: Fuchsia-300 rgb(240, 171, 252);
+
+     	destructive: red-700 rgb(185, 28, 28);
+		destructive-hover: red-600 rgb(220, 38, 38);
+		destructive-focus: red-800 rgb(153, 27, 27);
+     	destructive-foreground: red-300 rgb(252, 165, 165);
+		
+		link: blue-400 rgb(96, 165, 250);
+
+     	border: neutral-600 rgb(82, 82, 82) #525252
+     	input: violet-300 rgb(196, 181, 253);
+     	ring: violet-400 rgb(167, 139, 250)
+     	*/
+
+@layer base {
+	:root {
+		--background: 10 10 10;
+		--foreground: 250 250 250;
+
+		--card: 38 38 38;
+		--card-foreground: 224 231 255;
+
+		--popover: 64 64 64;
+		--popover-foreground: 245 245 245;
+
+		--muted: 82 82 82;
+		--muted-foreground: 163 163 163;
+
+		--primary: 109 40 217;
+		--primary-hover: 124 58 237;
+		--primary-focus: 91 33 182;
+		--primary-foreground: 196 181 253;
+
+		--secondary: 162 28 175;
+		--secondary-hover: 192 38 211;
+		--secondary-focus: 134 25 143;
+		--secondary-foreground: 240 171 252;
+
+		--muted: 75 85 99;
+		--muted-foreground: 156 163 175;
+
+		--accent: 161 98 7;
+		--accent-foreground: 254 240 138;
+
+		--destructive: 185 28 28;
+		--destructive-hover: 220 38 38;
+		--destructive-focus: 153 27 27;
+		--destructive-foreground: 252 165 165;
+
+		--link: 96 165 250;
+
+		--border: 75 85 99;
+		--input: 196 181 253;
+		--ring: 167 139 250;
+		--radius: 0.75rem;
+	}
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@layer base {
+	* {
+		@apply border-border;
+	}
+
+	html {
+		@apply h-full w-full scroll-smooth;
+	}
+
+	body {
+		@apply min-h-full w-full bg-background text-foreground caret-primary;
+	}
+
+	.dark body {
+		@apply caret-primary-foreground;
+	}
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer utilities {
+	@property --rotate {
+		syntax: '<angle>';
+		inherits: false;
+		initial-value: 0deg;
+	}
+
+	.gradient-border-animation {
+		position: relative;
+		border: none;
+		background: theme(colors.neutral.950);
+	}
+
+	.gradient-border-animation::after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		width: calc(100% + 4px);
+		height: calc(100% + 4px);
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: conic-gradient(
+			from var(--rotate),
+			transparent 0%,
+			theme(colors.yellow.200) 20%,
+			transparent 21%
+		);
+		animation: spin 6s linear infinite;
+	}
+
+	@keyframes spin {
+		0% {
+			--rotate: 0deg;
+		}
+		100% {
+			--rotate: 360deg;
+		}
+	}
+
+	.gradient-border-primary-transparent {
+		position: relative;
+		background: rgba(10, 10, 10, 0.8);
+	}
+	.gradient-border-primary-transparent::after {
+		content: '';
+		position: absolute;
+		border-radius: inherit;
+		inset: 0;
+		background: linear-gradient(
+				15deg,
+				transparent 20%,
+				theme(colors.primary.foreground),
+				transparent 90%
+			)
+			border-box;
+		border: 2px solid transparent;
+
+		mask:
+			linear-gradient(#fff 0 0) padding-box,
+			linear-gradient(#fff 0 0);
+
+		mask-composite: exclude;
+		-webkit-mask:
+			linear-gradient(#fff 0 0) padding-box,
+			linear-gradient(#fff 0 0);
+		-webkit-mask-composite: xor;
+	}
 }
