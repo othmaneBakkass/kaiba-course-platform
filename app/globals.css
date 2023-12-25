@@ -166,4 +166,47 @@
 			linear-gradient(#fff 0 0);
 		-webkit-mask-composite: xor;
 	}
+
+	.mask-fade-in-from-both-sides {
+		-webkit-mask: linear-gradient(
+			90deg,
+			transparent,
+			white 10%,
+			white 90%,
+			transparent
+		);
+		mask: linear-gradient(
+			90deg,
+			transparent,
+			white 10%,
+			white 90%,
+			transparent
+		);
+	}
+
+	.infinite-scroll {
+		animation: scroll 30s forwards linear infinite;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.infinite-scroll {
+			animation: none;
+		}
+
+		.mask-fade-in-from-both-sides {
+			mask: none;
+		}
+	}
+
+	@keyframes scroll {
+		to {
+			/* for this animation to work we need the content to be doubled
+			then we need to move it to the left by half the width of the content
+			but it will still not work because the gap we added between content will cause an offset
+			and the content will not finish in the original spot by the distance of such offset
+			that why we do calc(half distance - half of the offset)
+			*/
+			transform: translateX(calc(-50% - 2rem));
+		}
+	}
 }
