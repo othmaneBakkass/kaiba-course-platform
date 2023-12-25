@@ -23,11 +23,11 @@ export function Hero() {
 			{/* rays of light */}
 			<Image
 				src={LightRays}
-				className="absolute left-0 top-0 -z-10 select-none"
+				className="absolute left-0 top-0 -z-10 h-auto select-none"
 				aria-hidden
 				width={700}
-				height={700}
 				alt="rays of light"
+				priority
 			/>
 
 			<StarField backgroundColor="black" starCount={500} />
