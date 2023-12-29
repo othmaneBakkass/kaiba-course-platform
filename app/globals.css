@@ -209,4 +209,15 @@
 			transform: translateX(calc(-50% - 2rem));
 		}
 	}
+
+	.text-gradient-main {
+		background: linear-gradient(
+			90deg,
+			theme(colors.purple.500),
+			theme(colors.rose.500)
+		);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
 }
