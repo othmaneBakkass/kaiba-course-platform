@@ -76,7 +76,7 @@ export function LogosSlider() {
 	}, [reduceMotion]);
 
 	return (
-		<div className="mask-fade-in-from-both-sides mx-auto flex w-full max-w-5xl flex-col items-start justify-center gap-y-2 overflow-hidden">
+		<section className="mask-fade-in-from-both-sides mx-auto flex w-full max-w-5xl flex-col items-start justify-center gap-y-2 overflow-hidden">
 			{!logos ? (
 				// we add this div to avoid layout shifts on the first render
 				<div className="h-[114px] w-1" aria-hidden></div>
@@ -97,6 +97,6 @@ export function LogosSlider() {
 					</ul>
 				</>
 			)}
-		</div>
+		</section>
 	);
 }
