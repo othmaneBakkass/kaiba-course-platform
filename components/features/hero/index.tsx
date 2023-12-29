@@ -32,18 +32,18 @@ export function Hero() {
 
 			<StarField backgroundColor="black" starCount={500} />
 			{/* hero content */}
-			<div className="mx-auto w-[calc(100%-48px)] text-start sm:w-full sm:max-w-xl lg:w-[90%] lg:max-w-5xl lg:text-start ">
+			<div className="mx-auto w-[calc(100%-48px)] text-start sm:w-full sm:max-w-xl md:max-w-2xl lg:w-[90%] lg:max-w-5xl lg:text-start ">
 				{/* tag */}
 				<p className="gradient-border-primary-transparent mb-4 w-fit rounded-full border px-4 py-2 text-xs text-primary-foreground">
 					demo website
 				</p>
 				{/* headline */}
-				<h1 className="w-fit text-2xl font-bold capitalize xs:text-4xl lg:text-6xl lg:leading-normal">
+				<h1 className="w-fit text-2xl font-bold capitalize xs:text-4xl md:text-5xl lg:text-6xl lg:leading-normal">
 					level up your coding Skills{' '}
 					<br className="hidden min-[634px]:inline" />
 					Anytime Anywhere
 				</h1>
-				<p className="mt-2 text-sm text-muted-foreground md:mt-4 lg:text-base">
+				<p className="mt-2 text-sm text-muted-foreground md:mt-4 md:text-base">
 					Kaiba an e-learning platform for software engineers.
 					<br />
 					Take your coding skills to the next level with our vast library of
