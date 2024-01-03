@@ -1,13 +1,4 @@
-'use client';
-
-import {
-	Carousel,
-	CarouselContent,
-	CarouselItem,
-	CarouselNext,
-	CarouselPrevious
-} from '@/components/ui/carousel';
-import { ProductCard } from '@/components/ui/product-card';
+import { PopularProductsCarousel } from './carousel';
 
 export function PopularProducts() {
 	return (
@@ -17,26 +8,7 @@ export function PopularProducts() {
 				Courses <br className="hidden lg:inline" />
 				Loved by Learners Everywhere
 			</h2>
-			<div className="w-full "></div>
-
-			<Carousel>
-				<CarouselContent>
-					<CarouselItem className="basis-auto">
-						<ProductCard />
-					</CarouselItem>
-					<CarouselItem className="basis-auto">
-						<ProductCard />
-					</CarouselItem>
-					<CarouselItem className="basis-auto">
-						<ProductCard />
-					</CarouselItem>
-					<CarouselItem className="basis-auto">
-						<ProductCard />
-					</CarouselItem>
-				</CarouselContent>
-				<CarouselPrevious />
-				<CarouselNext />
-			</Carousel>
+			<PopularProductsCarousel />
 		</section>
 	);
 }
